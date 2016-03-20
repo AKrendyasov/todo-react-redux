@@ -1,0 +1,12 @@
+{
+  "name": "todo-react-redux",
+  "version": "1.0.0",
+  "description": "Todo app with react and redux",
+  "main": "index.js",
+  "scripts": {
+	"build": "gulp build",
+	"watch": "gulp watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Artem Demo"
+}
