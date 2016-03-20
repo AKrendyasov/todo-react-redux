@@ -3,5 +3,20 @@
 }
 
 .todo-list-item {
-    padding: .9em 0 0;
+    display: table;
+    width: 100%;
+    margin: .9em 0 0;
 }
+    .todo-list-item__cell {
+        display: table-cell;
+        &_delete {
+            text-align: right;
+        }
+    }
+    .todo-list-item__delete {
+        display: inline-block;
+        text-align: right;
+        width: 20px;
+        color: #464646;
+        cursor: pointer;
+    }
