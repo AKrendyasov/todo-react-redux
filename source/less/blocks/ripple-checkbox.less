@@ -1,0 +1,109 @@
+.ripple-checkbox {
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+
+.ripple-checkbox-label {
+    display: table;
+}
+
+    .ripple-checkbox-label__cell {
+        display: table-cell;
+    }
+
+.ripple-checkbox + .ripple-checkbox-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #4FC3F7;
+    transition: color 250ms cubic-bezier(.4,.0,.23,1);
+}
+.ripple-checkbox + .ripple-checkbox-label ins {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 2em;
+    height: 0;
+    right: 0;
+    overflow: hidden;
+    text-decoration: none;
+    transition: height 300ms cubic-bezier(.4,.0,.23,1);
+}
+.ripple-checkbox + .ripple-checkbox-label ins i {
+    position: absolute;
+    bottom: 0;
+    font-style: normal;
+    color: #9e9e9e;
+    text-decoration: line-through;
+}
+.ripple-checkbox + .ripple-checkbox-label .ripple-checkbox-symbol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+    width: 1em;
+    height: 1em;
+    background: transparent;
+    border: 2px solid #9E9E9E;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    transition: all 250ms cubic-bezier(.4,.0,.23,1);
+}
+
+.ripple-checkbox + .ripple-checkbox-label:hover {
+    color: #fff;
+}
+.ripple-checkbox + .ripple-checkbox-label:hover .ripple-checkbox-symbol {
+    background: rgba(255,255,255,.1);
+}
+.ripple-checkbox:checked + .ripple-checkbox-label ins { height: 100%; }
+
+.ripple-checkbox:checked + .ripple-checkbox-label .ripple-checkbox-symbol {
+    border: .5em solid #FFEB3B;
+    animation: ripple-checkbox-shrink-bounce 200ms cubic-bezier(.4,.0,.23,1);
+}
+.ripple-checkbox:checked + .ripple-checkbox-label .ripple-checkbox-symbol:before {
+    content: "";
+    position: absolute;
+    top: -0.1em;
+    left: -0.3em;
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    transform: rotate(45deg);
+    transform-origin: 0 100%;
+    animation: ripple-checkbox-check 125ms 250ms cubic-bezier(.4,.0,.23,1) forwards;
+}
+
+@keyframes ripple-checkbox-shrink-bounce {
+    0% {
+        transform: scale(1);
+    }
+    33% {
+        transform: scale(.85);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes ripple-checkbox-check {
+    0% {
+        width: 0;
+        height: 0;
+        border-color: #212121;
+        transform: translate3d(0,0,0) rotate(45deg);
+    }
+    33% {
+        width: .2em;
+        height: 0;
+        transform: translate3d(0,0,0) rotate(45deg);
+    }
+    100% {
+        width: .2em;
+        height: .5em;
+        border-color: #212121;
+        transform: translate3d(0,-.5em,0) rotate(45deg);
+    }
+}

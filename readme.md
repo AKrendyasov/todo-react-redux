@@ -1,4 +1,10 @@
-# ToDo with React and Redux
+# ToDo app with React and Redux
+
+## NPM
+
+```
+$ npm run build && npm run watch
+```
 
 ## Design
 
