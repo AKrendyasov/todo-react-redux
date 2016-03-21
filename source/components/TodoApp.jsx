@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {TodoList} from './TodoList';
+import {NewTodo} from './NewTodo';
 
 export class TodoApp extends React.Component {
     state = {};
@@ -20,6 +21,7 @@ export class TodoApp extends React.Component {
                     ToDo
                 </div>
                 <TodoList></TodoList>
+                <NewTodo></NewTodo>
             </div>
         );
     }

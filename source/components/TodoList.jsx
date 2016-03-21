@@ -15,11 +15,58 @@ export class TodoList extends React.Component {
 
     componentWillUnmount() {}
 
+    /**
+     * Hash function
+     *
+     * @source http://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
+     * @returns {number}
+     */
+    hashCode = (str) => {
+        let hash = 0;
+        if (str.length == 0) return hash;
+        for (let i = 0; i < str.length; i++) {
+            let char = str.charCodeAt(i);
+            hash = ((hash<<5)-hash)+char;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return hash;
+    };
+
+    renderItem = (item, index) => {
+        let itemIndex = item.title + String(index);
+        itemIndex = this.hashCode(itemIndex);
+        return (
+            <div className="todo-list-item" key={itemIndex}>
+                <div className="todo-list-item__cell">
+                    <input id={itemIndex}
+                           type="checkbox"
+                           className="ripple-checkbox"
+                           defaultChecked={item.done} />
+                    <label htmlFor={itemIndex}
+                           className="ripple-checkbox-label">
+                                <span className="ripple-checkbox-label__cell">
+                                    <span className="ripple-checkbox-symbol"></span>
+                                </span>
+                                <span className="ripple-checkbox-label__cell">
+                                    {item.title}
+                                    <ins><i>{item.title}</i></ins>
+                                </span>
+                    </label>
+                </div>
+                <div className="todo-list-item__cell
+                                        todo-list-item__cell_delete">
+                    <div className="todo-list-item__delete"
+                         dangerouslySetInnerHTML={{__html: '&#10006;'}}></div>
+                </div>
+            </div>
+        );
+    };
+
     render() {
         let todos = [
             {
                 title: "Off with your head",
-                done: false
+                done: true
             },
             {
                 title: "Dance 'til you're dead",
@@ -32,30 +79,14 @@ export class TodoList extends React.Component {
         ];
         return (
             <div className="todo-list">
-                {todos.map((item, index) => (
-                    <div className="todo-list-item" key={item.title + index}>
-                        <div className="todo-list-item__cell">
-                            <input id={item.title + index}
-                                   type="checkbox"
-                                   className="ripple-checkbox" />
-                            <label htmlFor={item.title + index}
-                                   className="ripple-checkbox-label">
-                                <span className="ripple-checkbox-label__cell">
-                                    <span className="ripple-checkbox-symbol"></span>
-                                </span>
-                                <span className="ripple-checkbox-label__cell">
-                                    {item.title}
-                                    <ins><i>{item.title}</i></ins>
-                                </span>
-                            </label>
-                        </div>
-                        <div className="todo-list-item__cell
-                                        todo-list-item__cell_delete">
-                            <div className="todo-list-item__delete"
-                                 dangerouslySetInnerHTML={{__html: '&#10006;'}}></div>
-                        </div>
-                    </div>
-                ))}
+                <div className="todo-list__undone">
+                    {todos.filter((item) => !item.done)
+                        .map((item, index) => this.renderItem(item, index))}
+                </div>
+                <div className="todo-list__done">
+                    {todos.filter((item) => item.done)
+                        .map((item, index) => this.renderItem(item, index))}
+                </div>
             </div>
         );
     }
