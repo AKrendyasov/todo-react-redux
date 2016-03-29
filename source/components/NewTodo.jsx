@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {addTodo} from '../actions/todos';
 
-export default class NewTodo extends React.Component {
+class NewTodo extends React.Component {
     state = {};
 
     constructor(props) {
@@ -16,7 +16,8 @@ export default class NewTodo extends React.Component {
 
     render() {
         const {addTodo} = this.props;
-        const onClick = () => {
+
+        const addNewTodo = () => {
             const title = this.refs.newTodoTitle.value;
             if (title && title.length > 0) {
                 addTodo({
@@ -34,7 +35,7 @@ export default class NewTodo extends React.Component {
                            className="new-todo__input"/>
                 </div>
                 <div className="new-todo__row new-todo__row_button">
-                    <button onClick={onClick} className="flat-button flat-button_blue">Add new todo</button>
+                    <button onClick={addNewTodo} className="flat-button flat-button_blue">Add new todo</button>
                 </div>
             </div>
         );

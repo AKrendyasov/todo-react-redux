@@ -13,3 +13,10 @@ export function addTodo(todo) {
         todo
     }
 }
+
+export function deleteTodo(todo) {
+    return {
+        type: constants.DELETE_TODO,
+        todo
+    }
+}

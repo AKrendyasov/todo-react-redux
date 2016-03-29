@@ -1,6 +1,9 @@
 import * as React from 'react';
+import {connect} from 'react-redux'
 
-export class TodoListItem extends React.Component {
+import {deleteTodo} from '../actions/todos';
+
+class TodoListItem extends React.Component {
     state = {};
 
     constructor(props) {
@@ -33,7 +36,16 @@ export class TodoListItem extends React.Component {
     };
 
     render() {
-        const itemIndex = 'TodoListItem-' + this.hashCode(this.props.item.title) + this.props.item.id;
+        const {item, deleteTodo} = this.props;
+        const itemIndex = 'TodoListItem-' + this.hashCode(item.title) + item.id;
+
+        const deleteThisTodo = () => {
+            deleteTodo(item)
+        };
+
+        const toggleTodo = () => {
+            console.log('TodoListItem.jsx');
+        };
 
         return (
             <div className="todo-list-item">
@@ -42,20 +54,21 @@ export class TodoListItem extends React.Component {
                            type="checkbox"
                            className="ripple-checkbox"
                            onChange={this.toggleTodo}
-                           defaultChecked={this.props.item.done} />
+                           defaultChecked={item.done} />
                     <label htmlFor={itemIndex}
                            className="ripple-checkbox-label">
                                 <span className="ripple-checkbox-label__cell">
                                     <span className="ripple-checkbox-symbol"></span>
                                 </span>
                                 <span className="ripple-checkbox-label__cell">
-                                    {this.props.item.title}
-                                    <ins><i>{this.props.item.title}</i></ins>
+                                    {item.title}
+                                    <ins><i>{item.title}</i></ins>
                                 </span>
                     </label>
                 </div>
                 <div className="todo-list-item__cell
-                                        todo-list-item__cell_delete">
+                                todo-list-item__cell_delete"
+                     onClick={deleteThisTodo}>
                     <div className="todo-list-item__delete"
                          dangerouslySetInnerHTML={{__html: '&#10006;'}}></div>
                 </div>
@@ -63,3 +76,12 @@ export class TodoListItem extends React.Component {
         );
     }
 }
+
+export default connect(
+    state => {
+        return {}
+    },
+    {
+        deleteTodo
+    }
+)(TodoListItem);

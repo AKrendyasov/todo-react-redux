@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux'
 import axios from 'axios';
 
-import {TodoListItem} from './TodoListItem';
+import TodoListItem from './TodoListItem';
 import {toggleTodo} from '../actions/todos';
 
 class TodoList extends React.Component {
@@ -19,7 +19,6 @@ class TodoList extends React.Component {
     componentWillUnmount() {}
 
     render() {
-        
         const {todos, toggleTodo} = this.props;
         const onClick = () => {
             console.log('TodoList.jsx', 'font-weigth: 700', 'onClick');

@@ -12,16 +12,17 @@ export class TodoApp extends React.Component {
 
     componentDidMount() {};
 
-    componentWillUnmount() {}
+    componentWillUnmount() {};
 
     render() {
+        let smth = [{},{}];
         return (
             <div className="todo-app">
                 <div className="todo-app-header">
                     ToDo
                 </div>
                 <TodoList></TodoList>
-                <NewTodo></NewTodo>
+                <NewTodo smth={smth} onClick={this.componentWillUnmount}></NewTodo>
             </div>
         );
     }
