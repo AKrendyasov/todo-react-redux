@@ -33,7 +33,8 @@ export class TodoListItem extends React.Component {
     };
 
     render() {
-        let itemIndex = 'TodoListItem-' + this.hashCode(this.props.item.title) + this.props.item.id;
+        const itemIndex = 'TodoListItem-' + this.hashCode(this.props.item.title) + this.props.item.id;
+
         return (
             <div className="todo-list-item">
                 <div className="todo-list-item__cell">

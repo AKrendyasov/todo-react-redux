@@ -1,6 +1,9 @@
 import * as React from 'react';
+import {connect} from 'react-redux'
 
-export class NewTodo extends React.Component {
+import {addTodo} from '../actions/todos';
+
+export default class NewTodo extends React.Component {
     state = {};
 
     constructor(props) {
@@ -12,17 +15,37 @@ export class NewTodo extends React.Component {
     componentWillUnmount() {}
 
     render() {
+        const {addTodo} = this.props;
+        const onClick = () => {
+            const title = this.refs.newTodoTitle.value;
+            if (title && title.length > 0) {
+                addTodo({
+                    id: +(new Date()),
+                    title
+                })
+            }
+        };
         return (
             <div className="new-todo">
                 <div className="new-todo__row">
-                    <input type="text"
+                    <input ref="newTodoTitle"
+                           type="text"
                            placeholder="New ToDo"
                            className="new-todo__input"/>
                 </div>
                 <div className="new-todo__row new-todo__row_button">
-                    <button className="flat-button flat-button_blue">Add new todo</button>
+                    <button onClick={onClick} className="flat-button flat-button_blue">Add new todo</button>
                 </div>
             </div>
         );
     }
 }
+
+export default connect(
+    state => {
+        return {}
+    },
+    {
+        addTodo
+    }
+)(NewTodo);

@@ -1,10 +1,11 @@
 import * as React from 'react';
-
+import { connect } from 'react-redux'
 import axios from 'axios';
 
 import {TodoListItem} from './TodoListItem';
+import {toggleTodo} from '../actions/todos';
 
-export class TodoList extends React.Component {
+class TodoList extends React.Component {
     state = {};
 
     constructor(props) {
@@ -18,38 +19,32 @@ export class TodoList extends React.Component {
     componentWillUnmount() {}
 
     render() {
-        let todos = [
-            {
-                id: 1,
-                title: "Off with your head",
-                done: true
-            },
-            {
-                id: 2,
-                title: "Dance 'til you're dead",
-                done: false
-            },
-            {
-                id: 3,
-                title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam maximus in mi ut suscipit.",
-                done: false
-            }
-        ];
+        
+        const {todos, toggleTodo} = this.props;
+        const onClick = () => {
+            console.log('TodoList.jsx', 'font-weigth: 700', 'onClick');
+        };
+
         return (
             <div className="todo-list">
-                <div className="todo-list__undone">
-                    {todos.filter((item) => !item.done)
-                        .map((todo, index) => (
-                            <TodoListItem item={todo} key={'Todo-Undone' + index}></TodoListItem>
-                        ))}
-                </div>
-                <div className="todo-list__done">
-                    {todos.filter((item) => item.done)
-                        .map((todo, index) => (
-                            <TodoListItem item={todo} key={'Todo-Done' + index}></TodoListItem>
-                        ))}
-                </div>
+                {todos.map((todo, index) => (
+                    <TodoListItem
+                        item={todo}
+                        key={'Todo-' + index}
+                        onClick={onClick}></TodoListItem>
+                ))}
             </div>
         );
     }
 }
+
+export default connect(
+    state => {
+        return {
+            todos: state.todos
+        }
+    },
+    {
+        toggleTodo
+    }
+)(TodoList)

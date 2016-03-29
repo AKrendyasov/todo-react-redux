@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import {TodoList} from './TodoList';
-import {NewTodo} from './NewTodo';
+import TodoList from './TodoList';
+import NewTodo from './NewTodo';
 
 export class TodoApp extends React.Component {
     state = {};
