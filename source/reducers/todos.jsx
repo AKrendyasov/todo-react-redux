@@ -4,6 +4,7 @@ import todo from './todo';
 export default function todos(state = [], action) {
     switch (action.type) {
         case  constants.ADD_TODO:
+            console.log(action);
             // Reducer will return all previous items and include the new one at the end of array
             return [
                 ...state,

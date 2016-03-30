@@ -1,0 +1,100 @@
+.flat-radio-container {
+    text-align: center;
+    padding: 15px 0 10px 0;
+    border-top: 2px solid #282A2B;
+    border-bottom: 2px solid #282A2B;
+}
+
+.flat-radio {
+    overflow: hidden;
+    display: inline-block;
+
+    input[type="radio"]:checked + label {
+        color: #585858;
+    }
+
+    label {
+        color: #8b8b8b;
+    }
+
+    input {
+        display: none;
+    }
+
+    input[type="radio"]:checked + label {
+        text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.32);
+        border-bottom: 0.11em solid #bebebe;
+        border-top: 0.25em solid #d8d8d8;
+        box-shadow: rgba(190, 190, 190, 0.25) 0 0 12px -2px inset, rgba(195, 195, 195, 0.25) 0 0 3px 3px inset;
+    }
+}
+
+.flat-radio-item {
+    float: left;
+
+    label {
+        background: #f1f1f1;
+        display: inline-block;
+        padding: 0.5em 1em;
+        border: 0.11em solid #c6c6c6;
+        border-left: 0 none;
+        border-bottom: 0.25em solid #c6c6c6;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &:first-child label {
+        border-radius: 4px 0 0 4px;
+        border-left: 0.11em solid #c6c6c6;
+    }
+
+    &:last-child label {
+        border-radius: 0 4px 4px 0;
+    }
+}
+
+.flat-radio.scuba {
+    input[type="radio"]:checked + label {
+        color: #e9fafd;
+    }
+    label {
+        color: #0b535d;
+    }
+    input[type="radio"]:checked + label {
+        border-bottom-color: #0d6874;
+        border-top-color: #1c8a98;
+        box-shadow: rgba(13, 104, 116, 0.25) 0 0 12px -2px inset, rgba(14, 112, 125, 0.25) 0 0 3px 3px inset;
+    }
+    .flat-radio-item label {
+        background: #18BACF;
+        border: 0.11em solid #0f7481;
+        border-bottom: 0.25em solid #0f7481;
+    }
+    .flat-radio-item:first-child label {
+        border-left-color: #0f7481;
+    }
+}
+
+.flat-radio.blue {
+    input[type="radio"]:checked + label {
+        color: #e9fafd;
+    }
+    label {
+        color: #0b535d;
+    }
+    input[type="radio"]:checked + label {
+        border-bottom-color: rgba(0, 0, 0, 0.24);
+        border-top-color: rgba(0, 0, 0, 0.24);
+        box-shadow: rgba(13, 104, 116, 0.25) 0 0 12px -2px inset, rgba(14, 112, 125, 0.25) 0 0 3px 3px inset;
+    }
+    .flat-radio-item label {
+        background: #55ACEE;
+        border: 0.11em solid #3C93D5;
+        border-bottom: 0.25em solid #3C93D5;
+    }
+    .flat-radio-item:first-child label {
+        border-left-color: #3C93D5;
+    }
+}

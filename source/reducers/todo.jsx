@@ -9,13 +9,13 @@ export default function todo(state, action) {
                 done: action.todo.done !== undefined ? action.todo.done : false
             };
         case constants.TOGGLE_TODO:
-            if (todo.id !== action.todo.id) {
-                return todo;
+            if (state.id !== action.todo.id) {
+                return state;
             }
 
             return {
-                ...todo,
-                done: !todo.done
+                ...state,
+                done: !state.done
             };
         default:
             return state;

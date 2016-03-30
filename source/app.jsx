@@ -49,8 +49,3 @@ ReactDOM.render(
         </Router>
     </Provider>,
     document.getElementById(MAIN_CONTAINER_ID));
-
-/*<Route path="tasks">
- <IndexRoute component={SearchPage}/>
- <Route path=":TaskId" component={SearchPage}/>
- </Route>*/

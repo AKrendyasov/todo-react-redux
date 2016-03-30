@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/artemdemo/todo-react-redux#readme",
   "devDependencies": {
-    "axios": "^0.9.1",
     "babel-core": "^6.7.2",
     "babel-plugin-transform-class-properties": "^6.6.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",

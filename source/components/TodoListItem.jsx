@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux'
 
-import {deleteTodo} from '../actions/todos';
+import {deleteTodo, toggleTodo} from '../actions/todos';
 
 class TodoListItem extends React.Component {
     state = {};
@@ -31,20 +31,17 @@ class TodoListItem extends React.Component {
         return Math.abs(hash);
     };
 
-    toggleTodo = () => {
-        console.log(this.props.item);
-    };
-
     render() {
-        const {item, deleteTodo} = this.props;
+        const {item, deleteTodo, toggleTodo} = this.props;
+
         const itemIndex = 'TodoListItem-' + this.hashCode(item.title) + item.id;
 
         const deleteThisTodo = () => {
             deleteTodo(item)
         };
 
-        const toggleTodo = () => {
-            console.log('TodoListItem.jsx');
+        const toggleThisTodo = () => {
+            toggleTodo(item);
         };
 
         return (
@@ -53,8 +50,8 @@ class TodoListItem extends React.Component {
                     <input id={itemIndex}
                            type="checkbox"
                            className="ripple-checkbox"
-                           onChange={this.toggleTodo}
-                           defaultChecked={item.done} />
+                           onChange={toggleThisTodo}
+                           checked={item.done} />
                     <label htmlFor={itemIndex}
                            className="ripple-checkbox-label">
                                 <span className="ripple-checkbox-label__cell">
@@ -82,6 +79,7 @@ export default connect(
         return {}
     },
     {
-        deleteTodo
+        deleteTodo,
+        toggleTodo
     }
 )(TodoListItem);

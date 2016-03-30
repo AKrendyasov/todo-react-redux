@@ -23,7 +23,8 @@ class NewTodo extends React.Component {
                 addTodo({
                     id: +(new Date()),
                     title
-                })
+                });
+                this.refs.newTodoTitle.value = '';
             }
         };
         return (
